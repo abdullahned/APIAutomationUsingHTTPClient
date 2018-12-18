@@ -2,6 +2,7 @@ package com.qa.client;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
@@ -14,7 +15,9 @@ import org.json.JSONObject;
 
 public class RestClient {
 
-	public void get(String url) throws ClientProtocolException, IOException
+	//1. GET Method without Headers:
+	
+	public CloseableHttpResponse get(String url) throws ClientProtocolException, IOException
 	{
 		
 		CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -24,35 +27,34 @@ public class RestClient {
 		CloseableHttpResponse closebaleHttpResponse =  httpClient.execute(httpget); //hit the GET URL
 		//Status code
 		
-		int statuscode = closebaleHttpResponse.getStatusLine().getStatusCode();
+		return closebaleHttpResponse;
 		
-		System.out.println("Status code --->"+statuscode);
-		
-		//Json String
-		
-		String responseString = EntityUtils.toString(closebaleHttpResponse.getEntity(), "UTF-8");
-		
-		JSONObject responseJson = new JSONObject(responseString);
-		
-		System.out.println("Response JSON from API--->" +responseJson);
-		
-		//All Headers
-		
-		Header[] headersArray = closebaleHttpResponse.getAllHeaders();
-		
-		HashMap<String, String> allHeaders = new HashMap<String, String>();
-		
-		for(Header header : headersArray)
-		{
-			allHeaders.put(header.getName(), header.getValue());
-			
-		}
-		
-		
-		System.out.println("Headers Array --->" +allHeaders);
-		
-
 		
 	}
+	
+	
+	//2. GET Method with Headers:
+	
+	public CloseableHttpResponse get(String url, HashMap<String, String> headerMap) throws ClientProtocolException, IOException{
+	CloseableHttpClient httpClient = HttpClients.createDefault();
+	HttpGet httpget = new HttpGet(url); //http get request
+	
+	for(Map.Entry<String,String> entry : headerMap.entrySet()){
+		httpget.addHeader(entry.getKey(), entry.getValue());
+	}
+	CloseableHttpResponse closebaleHttpResponse =  httpClient.execute(httpget); //hit the GET URL
+	return closebaleHttpResponse;
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
