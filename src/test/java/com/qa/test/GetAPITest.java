@@ -141,10 +141,14 @@ int statuscode = closebaleHttpResponse.getStatusLine().getStatusCode();
 		
 		//c. All Headers
 		Header[] headersArray =  closebaleHttpResponse.getAllHeaders();
+		
 		HashMap<String, String> allHeaders = new HashMap<String, String>();	
-		for(Header header : headersArray){
+		
+		for(Header header : headersArray)
+		{
 			allHeaders.put(header.getName(), header.getValue());
 		}	
+		
 		System.out.println("Headers Array-->"+allHeaders);
 		
 		
