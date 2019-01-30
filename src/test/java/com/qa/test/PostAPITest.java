@@ -54,7 +54,7 @@ public class PostAPITest extends TestBase {
 		mapper.writeValue(new File("C:\\Users\\m.abdullah\\eclipse-workspace\\restapi\\src\\main\\java\\com\\qa\\data\\users.json"), users);
 
 		//java object to json in String:
-		String usersJsonString = mapper.writeValueAsString(users);
+		String usersJsonString = mapper.writeValueAsString(users); //marshalling
 		System.out.println(usersJsonString);
 		
 		closebaleHttpResponse = restClient.post(url, usersJsonString, headerMap); //call the API
@@ -71,7 +71,7 @@ public class PostAPITest extends TestBase {
 		System.out.println("The response from API is:"+ responseJson);
 				
 		//json to java object:
-		Users usersResObj = mapper.readValue(responseString, Users.class); //actual users object
+		Users usersResObj = mapper.readValue(responseString, Users.class); //actual users object , un marshalling
 		System.out.println(usersResObj);
 				
 		Assert.assertTrue(users.getName().equals(usersResObj.getName()));

@@ -61,12 +61,12 @@ public class RestClient {
 				HttpPost httppost = new HttpPost(url); //http post request
 				httppost.setEntity(new StringEntity(entityString)); //for payload
 				
-				//for headers:
+				//for headers: auth token
 				for(Map.Entry<String,String> entry : headerMap.entrySet()){
 					httppost.addHeader(entry.getKey(), entry.getValue());
 				}
 				
-				CloseableHttpResponse closebaleHttpResponse = httpClient.execute(httppost);
+				CloseableHttpResponse closebaleHttpResponse = httpClient.execute(httppost); // hit the request
 				return closebaleHttpResponse;
 				
 				
