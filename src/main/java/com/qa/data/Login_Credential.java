@@ -5,6 +5,8 @@ public class Login_Credential {
 	String username;
 	String password;
 
+	
+
 
 
 	public Login_Credential(String username, String password) {

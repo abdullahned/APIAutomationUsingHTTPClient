@@ -62,7 +62,7 @@ public class PostAPITest extends TestBase {
 		//validate response from API:
 		//1. status code:
 		int statusCode = closebaleHttpResponse.getStatusLine().getStatusCode();
-		Assert.assertEquals(statusCode, testBase.RESPONSE_STATUS_CODE_201);
+		Assert.assertEquals(statusCode, testBase.RESPONSE_STATUS_CODE_200);
 		
 		//2. JsonString:
 		String responseString = EntityUtils.toString(closebaleHttpResponse.getEntity(), "UTF-8");
