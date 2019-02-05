@@ -40,7 +40,7 @@ public class Users_Login extends TestBase {
 		
 		HashMap<String, String> headerMap = new HashMap<String, String>();
 		
-		headerMap.put("Authorization", "Bearer 37adf0cb-e568-8a4a-a2ea-ea058247b79a");
+		headerMap.put("Authorization", "Bearer 8f99243e-f3f1-cd9a-2c87-573ae3ebcf68");
 		
 		headerMap.put("Content-Type", "application/json");
 		

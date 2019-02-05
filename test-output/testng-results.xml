@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="3720" started-at="2019-01-31T16:41:00Z" finished-at="2019-01-31T16:41:04Z">
+  <suite name="Default suite" duration-ms="1639" started-at="2019-02-05T16:47:08Z" finished-at="2019-02-05T16:47:10Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="3720" started-at="2019-01-31T16:41:00Z" finished-at="2019-01-31T16:41:04Z">
-      <class name="com.qa.test.Users_Login">
-        <test-method status="PASS" signature="valid_credentials()[pri:1, instance:com.qa.test.Users_Login@cc285f4]" name="valid_credentials" duration-ms="1756" started-at="2019-01-31T16:41:00Z" finished-at="2019-01-31T16:41:02Z">
+    <test name="Default test" duration-ms="1639" started-at="2019-02-05T16:47:08Z" finished-at="2019-02-05T16:47:10Z">
+      <class name="com.qa.test.User_Registration">
+        <test-method status="PASS" signature="new_account_creation()[pri:1, instance:com.qa.test.User_Registration@51565ec2]" name="new_account_creation" duration-ms="1614" started-at="2019-02-05T16:47:08Z" finished-at="2019-02-05T16:47:10Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- valid_credentials -->
-        <test-method status="PASS" signature="Invalid_Password()[pri:2, instance:com.qa.test.Users_Login@cc285f4]" name="Invalid_Password" duration-ms="1028" started-at="2019-01-31T16:41:02Z" finished-at="2019-01-31T16:41:03Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Invalid_Password -->
-        <test-method status="PASS" signature="Invalid_Email()[pri:3, instance:com.qa.test.Users_Login@cc285f4]" name="Invalid_Email" duration-ms="906" started-at="2019-01-31T16:41:03Z" finished-at="2019-01-31T16:41:04Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Invalid_Email -->
-      </class> <!-- com.qa.test.Users_Login -->
+        </test-method> <!-- new_account_creation -->
+      </class> <!-- com.qa.test.User_Registration -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
