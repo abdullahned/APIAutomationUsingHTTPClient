@@ -45,14 +45,15 @@ public class Users_Login extends TestBase {
 		headerMap.put("Content-Type", "application/json");
 		
 		headerMap.put("SSDEBUG", "SelfieStylerDev");
-		
+
 		//jackson API:
 		ObjectMapper mapper = new ObjectMapper();
 		
 		Login_Credential Login_Credential_obj = new Login_Credential("memtestwomen@ss.com","Bilal123"); //expected users obejct
+		
 				
 		//object to json file:
-		mapper.writeValue(new File("C:\\Users\\m.abdullah\\eclipse-workspace\\restapi\\src\\main\\java\\com\\qa\\data\\Login_Credential.json"), Login_Credential_obj);
+    	mapper.writeValue(new File("C:\\Users\\m.abdullah\\eclipse-workspace\\restapi\\src\\main\\java\\com\\qa\\data\\Login_Credential.json"), Login_Credential_obj);
 		
 		//java object to json in String:
 		String usersJsonString = mapper.writeValueAsString(Login_Credential_obj); //marshalling

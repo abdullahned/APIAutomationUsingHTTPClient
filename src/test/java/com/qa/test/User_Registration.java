@@ -3,17 +3,18 @@ package com.qa.test;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Random;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.base.TestBase;
 import com.qa.client.RestClient;
-import com.qa.data.user_registration;
+import com.qa.util.TestUtil;
 
 public class User_Registration extends TestBase {
 	
@@ -26,6 +27,10 @@ public class User_Registration extends TestBase {
 	CloseableHttpResponse closebaleHttpResponse;
 	
 	GET_Session getsession_obj = new GET_Session();
+	
+	Random r = new Random();
+	String usernamee = "QA"+r.nextInt(100);
+	String emaill = "Qtest"+r.nextInt(1000)+"@selfiestyler.com";
 	
 	@Test(priority=1, enabled=true)
 	
@@ -47,21 +52,44 @@ public class User_Registration extends TestBase {
 		
 		headerMap.put("SSDEBUG", "SelfieStylerDev"); 
 		
-		//jackson API:
-		ObjectMapper mapper = new ObjectMapper();
+		JSONObject userJson = new JSONObject()
+	             .put("username", usernamee)
+	             .put("email", emaill)
+	             .put("first_name", "test")
+	             .put("last_name", "user")
+	             .put("gender", "f")
+	        	 .put("phone", "+15142546014");
 		
-		user_registration user_registration_obj = new user_registration("abdullahned","mabdullah@selfiestyler.com",
-				"muhammad", "Abdullah", "M", "+15142546014", "Germany0!", "124", "iphone6", "false", "123");
+		JSONObject val = new JSONObject().put("value", "Germany0!");
 		
-		//object to json file:
-		mapper.writeValue(new File("C:\\Users\\m.abdullah\\eclipse-workspace\\restapi\\src\\main\\java\\com\\qa\\data\\user_registration.json"), user_registration_obj);
+		JSONObject passwordJson = new JSONObject().put("password", val);
 		
-		//java object to json in String:
-	   String usersJsonString = mapper.writeValueAsString(user_registration_obj); //marshalling
-				
-	   System.out.println("\n"+usersJsonString+"\n");
+	String testJson = new JSONObject()
+        .put("device_id", "1234567890123456789012345678901234567890")
+        .put("device_type", "iphone6")
+        .put("is_subscribed", false)
+        .put("api_version", "123")
+        .put("user", userJson)
+        .put("credentials", passwordJson).toString();  
+	
+
+//String usersJsonString2 ="{\"user\":{\"username\":\"test1019@selfiestyler.com\",\"email\":\"test20@selfiestyler.com\",\"first_name\":\"test\",\"last_name\":\"user\",\"gender\":\"f\",\"phone\":\"+15142546014\"},\"credentials\":{\"password\":{\"value\":\"Germany0!\"}},\"device_id\":\"1234567890123456789012345678901234567890\",\"device_type\":\"iphone6\",\"is_subscribed\":false,\"api_version\":\"123\"}";
+
+
+//String qwerty = "{\r\n    \"user\": {\r\n        \"username\":\"pak\",\r\n        \"email\":\"test900@selfiestyler.com\",\r\n        \"first_name\": \"test\",\r\n        \"last_name\": \"user\",\r\n        \"gender\": \"f\",\r\n        \"phone\": \"+15142546014\"\r\n    },\r\n    \r\n    \"credentials\": {\r\n        \"password\" : { \"value\": \"Germany0!\" }\r\n    },\r\n    \r\n    \r\n    \r\n    \"device_id\": \"1234567890123456789012345678901234567890\",\r\n    \"device_type\":  \"iphone6\",\r\n    \"is_subscribed\": false,\r\n    \"api_version\":\"123\"\r\n}";
+	
+	   		
+	  System.out.println("\n  Request "+testJson+"\n");
 	   
-	   closebaleHttpResponse = restClient.post(user_register_url, usersJsonString, headerMap); //call the API
+	   closebaleHttpResponse = restClient.post(user_register_url, testJson, headerMap); //call the API
+	   
+	 //validate response from API:
+	//1. status code:
+	  int statusCode = closebaleHttpResponse.getStatusLine().getStatusCode();
+	 	    
+	  System.out.println("Value of status code is: "+ statusCode +"\n");
+	 	    
+	  Assert.assertEquals(statusCode, testBase.RESPONSE_STATUS_CODE_200);
 	   
 	 //2. JsonString:
 	   String responseString = EntityUtils.toString(closebaleHttpResponse.getEntity(), "UTF-8");
@@ -69,7 +97,18 @@ public class User_Registration extends TestBase {
 	   JSONObject responseJson = new JSONObject(responseString);
 	 		
 	    System.out.println("The response from API is:"+ responseJson +"\n");
+
+        String first_name = TestUtil.getValueByJPath(responseJson, "/user/first_name");
 		
+		System.out.println("First Name is-->"+ first_name +"\n");
+		
+		Assert.assertEquals(first_name, "test");
+		
+        String last_name = TestUtil.getValueByJPath(responseJson, "/user/last_name");
+		
+		System.out.println("Last Name is-->"+ last_name +"\n");
+		
+		Assert.assertEquals(last_name, "user");	      
 		
 	}
 

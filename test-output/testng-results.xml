@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1639" started-at="2019-02-05T16:47:08Z" finished-at="2019-02-05T16:47:10Z">
+  <suite name="Default suite" duration-ms="4469" started-at="2019-02-08T16:50:43Z" finished-at="2019-02-08T16:50:47Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1639" started-at="2019-02-05T16:47:08Z" finished-at="2019-02-05T16:47:10Z">
+    <test name="Default test" duration-ms="4469" started-at="2019-02-08T16:50:43Z" finished-at="2019-02-08T16:50:47Z">
       <class name="com.qa.test.User_Registration">
-        <test-method status="PASS" signature="new_account_creation()[pri:1, instance:com.qa.test.User_Registration@51565ec2]" name="new_account_creation" duration-ms="1614" started-at="2019-02-05T16:47:08Z" finished-at="2019-02-05T16:47:10Z">
+        <test-method status="PASS" signature="new_account_creation()[pri:1, instance:com.qa.test.User_Registration@51565ec2]" name="new_account_creation" duration-ms="4454" started-at="2019-02-08T16:50:43Z" finished-at="2019-02-08T16:50:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- new_account_creation -->
