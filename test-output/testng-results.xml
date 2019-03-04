@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="1" total="2" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="4469" started-at="2019-02-08T16:50:43Z" finished-at="2019-02-08T16:50:47Z">
+  <suite name="Default suite" duration-ms="5216" started-at="2019-02-11T13:00:20Z" finished-at="2019-02-11T13:00:25Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="4469" started-at="2019-02-08T16:50:43Z" finished-at="2019-02-08T16:50:47Z">
+    <test name="Default test" duration-ms="5216" started-at="2019-02-11T13:00:20Z" finished-at="2019-02-11T13:00:25Z">
       <class name="com.qa.test.User_Registration">
-        <test-method status="PASS" signature="new_account_creation()[pri:1, instance:com.qa.test.User_Registration@51565ec2]" name="new_account_creation" duration-ms="4454" started-at="2019-02-08T16:50:43Z" finished-at="2019-02-08T16:50:47Z">
+        <test-method status="PASS" signature="new_account_creation()[pri:1, instance:com.qa.test.User_Registration@51565ec2]" name="new_account_creation" duration-ms="5182" started-at="2019-02-11T13:00:20Z" finished-at="2019-02-11T13:00:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- new_account_creation -->
